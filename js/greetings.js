@@ -11,9 +11,9 @@ const USERNAME_KEY = "username"
     e.preventDefault();
     loginForm.classList.add(HIDDEN_CLASSNAME);
     const username = loginInput.value;
-    console.log(username); 
+    // console.log(username); 
     localStorage.setItem("USERNAME_KEY", username)
-    paintGreetings(username);
+    paintGreetings();
     // greeting.innerText = "Hello " + username; 
     // greeting.innerText = `Hello ${username}`; //string과 변수를 함께 사용 시 백틱으로 표기
     
@@ -29,7 +29,8 @@ const USERNAME_KEY = "username"
 
 // link.addEventListener("click", handleLinkClick);
 
-function paintGreetings(username){
+function paintGreetings(){
+    const username = localStorage.getItem("USERNAME_KEY");
     greeting.innerText = `Hello ${username}`
     greeting.classList.remove(HIDDEN_CLASSNAME);
 }
@@ -40,5 +41,5 @@ if (saveUsername === null) {
     loginForm.classList.remove(HIDDEN_CLASSNAME);
     loginForm.addEventListener("submit", onLoginSubmit);
 }else{
-    paintGreetings(saveUsername)
+    paintGreetings()
 }
